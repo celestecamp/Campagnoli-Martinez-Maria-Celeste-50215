@@ -1,0 +1,18 @@
+{% extends 'app/index.html' %}
+
+{% block titulo_arriba %}
+Cambiar Contraseña - CELFUT
+{% endblock %}
+
+{% block contenido %}
+<br><br><br><br>
+<section class="bg0 p-t-23 p-b-140">
+<div class="formulario">
+    <form method="post">
+        {% csrf_token %}
+            {{ form.as_p }}
+        <button type="submit">Cambiar contraseña</button>
+    </form>
+</div>
+</section>
+{% endblock %}

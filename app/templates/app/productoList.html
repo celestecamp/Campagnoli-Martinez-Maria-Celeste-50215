@@ -1,0 +1,170 @@
+{% extends "app/index.html" %}
+{% load static %}
+
+{% block titulo_arriba %}
+Productos CELFUT
+{% endblock %}
+
+{% block contenido %}
+<section class="bg0 p-t-23 p-b-140">
+    <div class="container" style="margin-top:70px;">
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5" style="font-size:30px;">
+                Todos los productos
+            </h3>
+        </div>
+
+        {% if desde_etiquetas_view == False %}
+        <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-c-m m-tb-10">
+                <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
+                    <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
+                    <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Filtrar
+                </div>
+
+                <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+                    <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
+                    <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
+                    Buscar
+                </div>
+
+                {% if request.user.is_superuser %}
+                    <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4" style="margin-left:10px;padding:10px;">
+                        <a href="{% url 'nueva_etiqueta' %}" style="color: #929191;">AGREGAR ETIQUETA</a>
+                    </div>
+
+                    <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 " style="margin-left:10px;padding:10px;">
+                        <a href="{% url 'nuevo_producto' %}" style="color: #929191;">AGREGAR PRODUCTO</a>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="flex-w flex-sb-m p-b-52">
+                <!-- Search product -->
+                <form action="{% url 'buscar' %}" method="GET">
+                    <div class="dis-none panel-search w-full p-t-10 p-b-15">
+                        <div class="bor8 dis-flex p-l-15">
+                            <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
+                                <i class="zmdi zmdi-search"></i>
+                            </button>
+
+                            <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="buscar" placeholder="Search">
+                        </div>	
+                    </div>
+                </form>
+
+                <!-- Filtrar -->
+                <div class="dis-none panel-filter w-full p-t-10">
+                    <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+                        <div class="filter-col1 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Por categoría
+                            </div>
+
+                            <ul>
+                                <li class="p-b-6">
+                                    <a href="{% url 'lista_productos' %}" class="filter-link stext-106 trans-04">
+                                        Todo
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="{% url 'productos_filtrados_tipo' tipo='Camiseta' %}" class="filter-link stext-106 trans-04">
+                                        Camisetas
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="{% url 'productos_filtrados_tipo' tipo='Short' %}" class="filter-link stext-106 trans-04">
+                                        Shorts
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="{% url 'productos_filtrados_tipo' tipo='Abrigo' %}" class="filter-link stext-106 trans-04">
+                                        Abrigos
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="{% url 'productos_filtrados_tipo' tipo='Accesorio' %}" class="filter-link stext-106 trans-04">
+                                        Accesorios
+                                    </a>
+                                </li>
+
+                                <li class="p-b-6">
+                                    <a href="{% url 'productos_filtrados_tipo' tipo='Pelota' %}" class="filter-link stext-106 trans-04">
+                                        Pelotas
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!--línea vertical de separación -->
+                        <div style="border-left: 1px solid #989898; height: 400px; margin-left:50px; margin-right: 20px"></div>
+                        <!--____________________________-->
+
+                        <div class="filter-col2 p-r-15 p-b-27">
+                            <div class="mtext-102 cl2 p-b-15">
+                                Por Etiqueta
+                            </div>
+
+                            <ul>
+                                <li class="p-b-6">
+                                    <a href="{% url 'lista_productos' %}" class="filter-link stext-106 trans-04">
+                                        Todo
+                                    </a>
+                                </li>
+
+                                {% for etiqueta in etiquetas %}
+                                <li class="p-b-6">
+                                    <div style="display:flex; align-items:center;">
+                                        <a href="{% url 'productos_filtrados_etiqueta' etiqueta_tag=etiqueta.tag %}" class="filter-link stext-106 trans-04" style="margin-right:5px;">{{ etiqueta.tag}}</a>
+
+                                        {% if request.user.is_superuser %}
+                                            <a href="{% url 'editar_etiqueta' etiqueta.id %}"><img src="{% static 'images/icons/edit-icon.png' %}" alt="EDITAR" title="Editar" style="height:15px;width:auto;"></a>
+                                            <a href="{% url 'borrar_etiqueta' etiqueta.id %}" class="boton_comprar">
+                                                <img src="{% static 'images/icons/delete-icon.png' %}" alt="BORRAR" title="Borrar" style="height:15px;width:auto;margin-left:10px;"></a>
+                                        {% endif %}
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>			
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+    <!--________PRODUCTOS________-->
+        <div class="row isotope-grid">
+        {% for p in productos %}
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{p.tipo}}">
+                <!-- Block2 -->
+                <div class="block2">
+                    <div class="block2-pic hov-img0">
+                        <a href="{% url 'detalle_producto' producto_id=p.id %}"><img src="{{ p.imagen.url }}" alt="IMG-PRODUCT"></a>
+                    </div>
+
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l ">
+                            <a href="{% url 'detalle_producto' producto_id=p.id %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                {{ p.nombre }}
+                            </a>
+
+                            <span class="stext-105 cl3">
+                                ${{ p.precio }}
+                            </span>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

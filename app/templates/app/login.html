@@ -1,0 +1,26 @@
+{% extends 'app/index.html' %}
+
+{% block titulo_arriba %}
+Iniciar Sesión
+{% endblock %}
+
+{% block contenido %}
+<br><br><br><br>
+<section class="bg0 p-t-23 p-b-140">
+    <div class="formulario">
+        <form method="post">
+            {% csrf_token %}
+            <label for="id_username">Usuario:</label>
+            {{ form.username }}<br>
+            <label for="id_password">Contraseña:</label>
+            {{ form.password }}
+            <div style="display: flex; align-items: center;">
+                <p>Primera vez?</p>&nbsp;
+                <a href="{% url 'registrar' %}" style="color:#7e8ae4"> Registrate. </a>
+            </div><br>
+            <button type="submit">Iniciar sesión</button>
+        </form>
+    </div>
+
+</section>
+{% endblock %}

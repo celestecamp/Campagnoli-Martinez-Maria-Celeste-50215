@@ -1,0 +1,22 @@
+{% extends "app/index.html" %}
+{% load static %}
+
+{% block titulo_arriba %}
+Finalizar - CELFUT
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/comprar.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<div class="fin">
+    <div class="centro-flexbox">
+        <h1 class='Titulo'>Gracias por su compra</h1>
+        <h3>Le enviaremos por email los detalles para continuar el pago.</h3>
+
+        <a href="{% url 'home' %}">Volver al inicio</a>
+    </div>
+</div>
+<br>
+{% endblock %}

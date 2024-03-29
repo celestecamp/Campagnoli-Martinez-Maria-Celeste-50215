@@ -1,0 +1,19 @@
+{% extends 'app/index.html' %}
+{% load static %}
+
+{% block titulo_arriba %}
+Agregar Avatar - CELFUT
+{% endblock %}
+
+{% block contenido %}
+<br><br><br><br>
+<section class="bg0 p-t-23 p-b-140">
+<div class="formulario">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form.as_p }}
+        <button type="submit">Agregar avatar</button>
+    </form>
+</div>
+</section>
+{% endblock %}

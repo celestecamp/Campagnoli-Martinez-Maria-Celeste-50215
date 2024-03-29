@@ -1,0 +1,46 @@
+{% extends "app/index.html" %}
+{% load static %}
+
+{% block titulo_arriba %}
+Realizar Compra - CELFUT
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/comprar.css' %}">
+{% endblock %}
+
+{% block contenido %}
+    <h1 class="comprar">COMPRAR PRODUCTO</h2>
+    <div style="display: flex; margin-left: 100px; margin-top:20px;">
+        <div style="margin-right: 20px;">
+            <img class="imag" src="{{ p.imagen.url }}" alt="Imagen del Producto">
+        </div>
+
+        <div class="detalles compra_detalles">
+            <p>{{ p.nombre }}</p>
+            <p>${{ p.precio }}</p>
+            <p>+ Envío: $3500 (Argentina)</p>
+        </div>
+    </div>
+
+    <hr>
+    <div style="margin-left:100px;"">
+        <h2 class='Titulo' style="font-family: Poppins-Bold; src: url('../fonts/Poppins/Poppins-Bold.ttf)';">Precio Final de su compra</h2>
+            {% with precio_final=p.precio|add:3500 %}
+                <h4 class="compra_detalles">${{ precio_final }}</h4>
+            {% endwith %}
+    </div>
+
+    <div class="formulario_compra compra_detalles">
+        <p>Por favor, complete lo siguientes datos:</p>
+        
+        <form action="{% url 'compra_fin' %}" method="post" class="formulario">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit">Finalizar</button>
+        </form>
+    </div>
+      
+
+{% endblock %}

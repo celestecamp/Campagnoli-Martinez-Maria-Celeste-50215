@@ -1,0 +1,86 @@
+.comprar {
+    margin-top: 93px;
+    margin-left:100px;
+    text-decoration:underline;
+    font-family: Poppins-Bold;
+}
+
+.imag {
+    width:auto;
+    height:100px;
+}
+
+.compra_detalles {
+    font-family: Poppins-Regular;
+}
+
+.formulario_compra {
+    margin-top: 10px;
+    margin-left: 100px;
+    font-family: Poppins-Regular;
+}
+
+.formulario {
+    margin-left:0px;
+    margin-top:10px;
+    font-family: Poppins-Regular;
+}
+
+select {
+    width: 100%; /* Ancho del menú desplegable */
+    padding: 8px; /* Espaciado interno */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 4px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    background-color: #cbcee89d;
+    
+}
+
+/* Estilo cuando el menú desplegable está enfocado */
+select:focus {
+    outline: none; /* Quita el contorno */
+    border-color: #9da4e0f3; /* Cambia el color del borde al enfocarse */
+}
+
+/* Estilo para las opciones dentro del menú desplegable */
+option {
+    background-color: #fff; /* Color de fondo */
+    color: #333; /* Color del texto */
+    font-family: Poppins-Regular;
+}
+
+/* Estilo para las opciones cuando están seleccionadas */
+option:checked {
+    background-color: #007bff; /* Color de fondo cuando está seleccionado */
+    color: #fff; /* Color del texto cuando está seleccionado */
+}
+
+.fin {
+    font-family: Poppins-Bold;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    /* Ajusta el tamaño del contenedor según sea necesario */
+    width: 100%;
+    height: 100vh; /* Establece el alto al 100% del viewport */
+}
+
+.centro-flexbox {
+    width: auto;
+    height: 100px;
+    text-align: center;
+}
+
+.centro-flexbox a{
+    background-color: #8190ef;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: Poppins-Bold;
+    border-radius: 23px;
+    margin-top:15px;
+}

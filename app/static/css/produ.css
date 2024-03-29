@@ -1,0 +1,108 @@
+.titulo {
+    font-family: Poppins-Regular;
+    src: url('../fonts/Poppins/Poppins-Regular.ttf');
+}
+
+.boton_comprar {
+    background-color: #8190ef;
+    border: none;
+    color: white;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-family: Poppins-Bold;
+    src: url('../fonts/Poppins/Poppins-Bold.ttf');
+    border-radius: 23px;
+    margin-top:15px;
+}
+
+.detalles {
+    flex: 1;
+    font-family: Poppins-Light;
+    src: url('../fonts/Poppins/Poppins-Light.ttf'); 
+}
+
+.linea {
+    border-left: 6px solid #8190ef;
+    height: 200px;
+    padding:20px;
+}
+
+.etiquetas {
+    color:#ffffff;
+    margin-top: 5px;
+}
+
+span {
+    display: block;
+    float: left;
+    outline: 2px solid #b1baf3;
+    outline-style: dashed;
+    outline-width: 1.3px;
+    width: auto;
+    padding-right: 3px;
+    padding-left: 3px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background-color:#b1baf3
+}
+
+/* .comentario {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.info-comentario img {
+    width:90px;
+    height:90px;
+    border:black;
+    border-style: solid;
+    border-radius: 70px;
+}
+
+.info-comentario {
+    display: flex;
+} */
+
+.dejar_comment {
+    color:#8190ef;
+    font-family: Poppins-Regular;
+}
+
+.comentario {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    margin-right: 10px; /* Espacio entre el avatar y el contenido */
+}
+
+.avatar img {
+    width: 90px;
+    height: 90px;
+    border: 3px solid #b1baf3; /* Ajusta el estilo del borde del avatar según tus preferencias */
+    border-radius: 50%; /* Para hacerlo circular */
+}
+
+.info {
+    display: flex;
+    flex-direction: column; /* Apila el autor y la fecha uno encima del otro */
+}
+
+.texto {
+    margin-top: 5px; /* Espacio entre el autor/fecha y el comentario */
+    font-family: Poppins-Regular;
+}
+
+.fecha {
+    margin-top: 5px; /* Espacio entre el autor y la fecha */
+    font-size:85%;
+    font-family: Poppins-Light;
+}
+
+.info h5 {
+    font-family: Poppins-Regular;
+}
